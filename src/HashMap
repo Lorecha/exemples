@@ -1,0 +1,46 @@
+
+Expliquez le fonctionnement de HashMap. Comment les collisions entre doublons sont-elles résolues ?
+
+Si quelqu'un me demande de décrire "Comment fonctionne HashMap ?",
+je réponds simplement : "Sur les principes du hachage". C'est aussi simple que cela.
+
+Le hachage, dans sa forme la plus simple, est un moyen d'attribuer un code unique à une variable ou un objet après avoir
+ appliqué une formule ou un algorithme à ses propriétés.
+Une carte par définition est :
+ "Un objet qui fait correspondre des clés à des valeurs".
+
+ Donc, HashMap a une classe interne Entry, qui ressemble à ceci :
+
+static class Entry<k ,V> implements Map.Entry<k ,V>
+{
+final K key;
+V value;
+Entry<k ,V> next;
+final int hash;
+...//More code goes here
+}
+Lorsque quelqu'un essaie de stocker une paire clé-valeur dans un HashMap, les choses suivantes se produisent :
+
+Tout d'abord, la nullité de l'objet key est vérifiée.
+ Si la clé est nulle, la valeur est stockée dans la position table[0]. Parce que le code de hachage pour null est toujours 0.
+Ensuite, à l'étape suivante, une valeur de hachage est calculée en utilisant le code de hachage de la clé en appelant sa méthode hashCode().
+ Cette valeur de hachage est utilisée pour calculer l'index dans le tableau pour stocker l'objet Entry. Les concepteurs du JDK ont supposé qu'il
+  pouvait y avoir des fonctions hashCode() mal écrites qui pouvaient renvoyer une valeur de code de hachage très élevée ou faible.
+  Pour résoudre ce problème, ils ont introduit une autre fonction hash(), et ont passé le code de hachage de l'objet
+  à cette fonction hash() pour obtenir une valeur de hachage dans la plage de taille de l'index du tableau.
+Maintenant la fonction indexFor(hash, table.length) est appelée pour calculer la position exacte de l'index pour stocker l'objet Entry.
+Voici la partie principale. Maintenant, comme nous savons que deux objets inégaux peuvent avoir la même valeur de code de hachage,
+ comment deux objets différents seront-ils stockés dans le même emplacement de tableau [appelé seau]. La réponse est LinkedList.
+ Si vous vous souvenez, la classe Entry avait un attribut "next". Cet attribut pointe toujours vers l'objet suivant dans la chaîne.
+  C'est exactement le comportement de LinkedList.
+Ainsi, en cas de collision, les objets Entry sont stockés sous forme de LinkedList. Lorsqu'un objet Entry doit être stocké dans un index particulier,
+ HashMap vérifie s'il existe déjà une entrée ? S'il n'y a pas d'entrée déjà présente, l'objet Entry est stocké à cet emplacement.
+
+S'il existe déjà un objet à l'index calculé, son attribut suivant est vérifié. S'il est nul, l'objet Entry actuel devient le noeud suivant de la LinkedList.
+Si la variable suivante n'est pas nulle, la procédure est suivie jusqu'à ce que la variable suivante soit évaluée comme nulle.
+
+Que se passe-t-il si nous ajoutons un autre objet de valeur avec la même clé que celle entrée auparavant. Logiquement, il devrait remplacer
+ l'ancienne valeur. Comment cela se passe-t-il ? Eh bien, après avoir déterminé la position de l'index de l'objet Entry, tout en itérant sur
+ LinkedList sur l'index calculé, HashMap appelle la méthode equals() sur l'objet key pour chaque objet Entry. Tous ces objets Entry dans la
+  LinkedList auront un code de hachage similaire mais la méthode equals() testera la véritable égalité. Si key.equals(k) est vrai, les deux
+  clés sont traitées comme le même objet clé. Cela entraînera le remplacement de l'objet valeur dans l'objet Entry uniquement.

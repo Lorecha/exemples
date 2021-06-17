@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Connectormongo">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../lib/Connectormongo" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../lib/Connectormongo" recursive="false" />
+  </library>
+</component>

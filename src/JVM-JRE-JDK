@@ -1,0 +1,50 @@
+JVM
+JVM est l'acronyme de Java Virtual Machine ; c'est une machine abstraite qui fournit l'environnement d'exécution dans lequel le bytecode Java peut être exécuté.
+Il s'agit d'une spécification qui précise le fonctionnement de la machine virtuelle Java. Sa mise en œuvre a été fournie par Oracle et d'autres sociétés.
+Son implémentation est connue sous le nom de JRE.
+
+Les JVM sont disponibles pour de nombreuses plates-formes matérielles et logicielles (la JVM dépend donc de la plate-forme).
+ Il s'agit d'une instance d'exécution qui est créée lorsque nous exécutons la classe Java.
+ Il existe trois notions de la JVM : la spécification, l'implémentation et l'instance.
+
+JRE
+JRE est l'abréviation de Java Runtime Environment. Il s'agit de l'implémentation de la JVM. Le Java Runtime Environment est un ensemble d'outils logiciels utilisés
+pour développer des applications Java. Il est utilisé pour fournir l'environnement d'exécution. Il s'agit de l'implémentation de la JVM. Il existe physiquement.
+Il contient un ensemble de bibliothèques et d'autres fichiers que la JVM utilise au moment de l'exécution.
+
+JDK
+JDK est l'acronyme de Java Development Kit. Il s'agit d'un environnement de développement logiciel qui est utilisé pour développer des applications et des applets Java.
+ Il existe physiquement. Il contient JRE + des outils de développement. Le JDK est une mise en œuvre de l'une des plates-formes Java ci-dessous, publiées par Oracle Corporation :
+
+Standard Edition Java Platform
+Enterprise Edition Java Platform
+Micro Edition Java Platform
+
+Qu'est-ce que la plate-forme ?
+Une plate-forme est l'environnement matériel ou logiciel dans lequel un logiciel est exécuté. Il existe deux types de plates-formes :
+ les plates-formes logicielles et
+ les plates-formes matérielles.
+ Java fournit la plate-forme logicielle.
+Qu'est-ce que le classloader ?
+Le chargeur de classe est un sous-système de la JVM qui est utilisé pour charger les fichiers de classe. Chaque fois que nous exécutons
+un programme Java, celui-ci est d'abord chargé par le classloader. Il existe trois chargeurs de classe intégrés dans Java.
+
+Bootstrap ClassLoader : C'est le premier classloader qui est la superclasse du classloader Extension. Il charge le fichier rt.jar
+ qui contient tous les fichiers de classe de Java Standard Edition, comme les classes du paquet java.lang, les classes du paquet java.net,
+  les classes du paquet java.util, les classes du paquet java.io, les classes du paquet java.sql, etc.
+Extension ClassLoader : C'est le chargeur de classe enfant de Bootstrap et le chargeur de classe parent du chargeur de classe System.
+ Il charge les fichiers jar situés dans le répertoire $JAVA_HOME/jre/lib/ext.
+ClassLoader System/Application : C'est le classloader enfant du classloader Extension. Il charge les fichiers de classe à partir du classpath.
+ Par défaut, le classpath est défini sur le répertoire actuel. Vous pouvez modifier le classpath en utilisant le commutateur "-cp" ou "-classpath".
+ Il est également connu sous le nom d'Application classloader.
+
+
+Quels sont les différents spécificateurs d'accès en Java ?
+En Java, les spécificateurs d'accès sont les mots-clés utilisés pour définir la portée de l'accès à une méthode, une classe ou une variable.
+ En Java, il existe quatre spécificateurs d'accès indiqués ci-dessous.
+
+Public Les classes, méthodes ou variables définies comme publiques sont accessibles à toute classe ou méthode.
+Protected Protected est accessible par la classe du même paquet, ou par la sous-classe de cette classe, ou au sein de la même classe.
+Default Les classes par défaut ne sont accessibles qu'à l'intérieur du paquetage. Par défaut, toutes les classes, méthodes et variables ont une portée par défaut.
+Private La classe, les méthodes ou les variables définies comme private ne sont accessibles qu'au sein de la classe.
+

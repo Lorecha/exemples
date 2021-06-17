@@ -1,0 +1,26 @@
+Une BeanFactory est comme une classe d'usine qui contient une collection de beans. Le BeanFactory contient les définitions de plusieurs beans
+ en son sein et instancie ensuite le bean lorsque les clients le demandent. BeanFactory est capable de créer des associations entre des objets
+  collaboratifs au fur et à mesure qu'ils sont instanciés. Cela enlève la charge de la configuration du bean lui-même et du client du bean.
+  BeanFactory prend également part au cycle de vie d'un bean, en faisant des appels aux méthodes d'initialisation et de destruction personnalisées.
+
+En apparence, un contexte d'application est identique à une fabrique de beans. Les deux chargent les définitions de beans, relient les beans entre eux
+et distribuent les beans sur demande. Mais il fournit également :
+
+Un moyen de résoudre les messages texte, y compris le support de l'internationalisation.
+Un moyen générique de charger des ressources de fichiers.
+Des événements pour les beans qui sont enregistrés comme auditeurs.
+Les trois implémentations communément utilisées de ApplicationContext sont :
+
+
+
+1
+
+ClassPathXmlApplicationContext : Il charge la définition du contexte à partir d'un fichier XML situé dans le classpath, en traitant les définitions
+ de contexte comme des ressources du classpath. Le contexte d'application est chargé à partir du classpath de l'application en utilisant le code.
+
+2
+FileSystemXmlApplicationContext : Il charge la définition du contexte à partir d'un fichier XML dans le système de fichiers. Le contexte d'application
+ est chargé à partir du système de fichiers en utilisant le code.
+
+3
+XmlWebApplicationContext : Il charge la définition du contexte à partir d'un fichier XML contenu dans une application web.

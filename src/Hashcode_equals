@@ -1,0 +1,20 @@
+Quand faut-il surcharger les méthodes hashCode() et equals() ?
+Les méthodes hashCode() et equals() ont été définies dans la classe Object, qui est la classe mère des objets java. Pour cette raison,
+ tous les objets java héritent d'une implémentation par défaut de ces méthodes.
+
+La méthode hashCode() est utilisée pour obtenir un nombre entier unique pour un objet donné.
+ Ce nombre entier st utilisé pour déterminer l'emplacement du seau, lorsque cet objet doit être stocké dans une structure de données de type HashTable.
+  Par défaut, la méthode hashCode() d'Object renvoie une représentation entière de l'adresse mémoire où l'objet est stocké.
+La méthode equals(), comme son nom l'indique, est utilisée pour vérifier simplement l'égalité de deux objets.
+ L'implémentation par défaut vérifie simplement les références d'objets de deux objets pour vérifier leur égalité.
+
+Notez qu'il est généralement nécessaire de surcharger la méthode hashCode chaque fois que cette méthode est surchargée, afin de maintenir le contrat général
+ pour la méthode hashCode(), qui stipule que des objets égaux doivent avoir des codes de hachage égaux.
+
+equals() doit définir une relation d'égalité (elle doit être réflexive, symétrique et transitive). En outre,
+elle doit être cohérente (si les objets ne sont pas modifiés, elle doit continuer à renvoyer la même valeur).
+En outre, o.equals(null) doit toujours retourner false.
+hashCode() doit également être cohérente (si l'objet n'est pas modifié en termes de equals(), elle doit continuer à retourner la même valeur).
+La relation entre les deux méthodes est la suivante :
+
+Chaque fois que a.equals(b), alors a.hashCode() doit être identique à b.hashCode().

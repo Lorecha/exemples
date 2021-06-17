@@ -1,0 +1,29 @@
+Différence entre les interfaces et les classes abstraites ?
+
+
+Les variables déclarées dans une interface Java sont par défaut finales.
+Une classe abstraite peut contenir des variables non finales.
+
+Les interfaces Java sont implicitement abstraites et ne peuvent pas avoir d'implémentations.
+
+Une classe abstraite Java peut avoir des méthodes d'instance qui implémentent un comportement par défaut.
+
+Les membres d'une interface Java sont publics par défaut.
+Une classe abstraite Java peut avoir les valeurs habituelles de membres de classe comme  private ou abstract, etc.
+
+Une interface Java doit être implémentée en utilisant le mot clé "implements" ;
+ une classe abstraite Java doit être étendue en utilisant le mot clé "extends".
+
+Une classe Java peut implémenter plusieurs interfaces mais elle ne peut étendre qu'une seule classe abstraite.
+
+Une interface est absolument abstraite et ne peut pas être instanciée ;
+une classe abstraite Java ne peut pas non plus être instanciée, mais peut être invoquée si un main() existe.
+
+Depuis Java 8, vous pouvez définir des méthodes par défaut dans les interfaces.
+
+Les classes abstraites sont légèrement plus rapides que les interfaces,
+car ces dernières impliquent une recherche avant d'appeler toute méthode surchargée en Java.
+
+ Il ne s'agit pas d'une différence significative dans la plupart des cas,
+ mais si vous écrivez une application dont le temps d'exécution est critique,
+ vous ne voudrez peut-être pas laisser une pierre non retournée.
